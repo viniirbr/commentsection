@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frontend Mentor - Interactive comments section
 
 ![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)
@@ -104,3 +105,7 @@ We love receiving feedback! We're always looking to improve our challenges and o
 This challenge is completely free. Please share it with anyone who will find it useful for practice.
 
 **Have fun building!** 🚀
+=======
+# commentsection
+Projeto baseado em um desafio do Frontend Mentor de uma seção interativa de comentários.
+>>>>>>> 8cc38bfc60552b28f6493081b8b1a38d1ee5305a
