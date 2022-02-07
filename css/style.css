@@ -1,0 +1,63 @@
+:root {
+    /*primary colors*/
+    --moderate-blue: hsl(238, 40%, 52%);
+    --soft-red: hsl(358, 79%, 66%);
+    --light-grayish-blue: hsl(239, 57%, 85%);
+    --pale-red: hsl(357, 100%, 86%);
+    /*neutral colors*/
+    --dark-blue: hsl(212, 24%, 26%);
+    --grayish-blue: hsl(211, 10%, 45%);
+    --light-gray: hsl(223, 19%, 93%);
+    --very-light-gray: hsl(228, 33%, 97%);
+    --white: hsl(0, 0%, 100%);
+}
+
+body {
+    background: var(--very-light-gray);
+    font-family:'Rubik', sans-serif;
+}
+
+#comment__add {
+    background: var(--white);
+    justify-content: space-between;
+    display: flex;
+    padding: 20px;
+    border-radius: 10px;
+    width: 800px;
+    height: 90px;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#current-user-pic {
+    height: 60px;
+}
+
+#comment__input {
+    width: 70%;
+    height: 80px;
+    resize: unset;
+    font-family:'Rubik', sans-serif;
+    padding: 10px;
+    font-size: 1rem;
+    border-color: var(--light-grayish-blue);
+    border-radius: 5px;
+}
+
+#comment__input:focus {
+    outline-color: var(--moderate-blue);
+}
+
+.button {
+    background: var(--moderate-blue);
+    color: var(--white);
+    font-weight: 700;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
