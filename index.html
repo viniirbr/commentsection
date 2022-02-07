@@ -15,9 +15,40 @@
 <body>
   <main>
     <section id="comment__list">
+      <article class="comment-item comment-block">
+        <div class="like-count-container">
+          <div class="like-control-component">
+            <img src="images/icon-plus.svg" class="add-remove-like">
+            <p class="like-count">10</p>
+            <img src="images/icon-minus.svg" class="add-remove-like">
+          </div>
+        </div>
+        <div class="comment-item-container">
+          <div class="comment-item-header">
+            <div class="container-author-date">
+              <img class="author-profile" src="images/avatars/image-amyrobson.png">
+              <h3 class="author">
+                amyrobson
+              </h3>
+              <h4 class="date">
+                1 month ago  
+              </h4>
+            </div>
+            <div class="comment-item-header-reply">
+              <img src="images/icon-reply.svg" class="reply-icon">
+              <p class="reply-text">Reply</p>
+            </div>
+
+          </div>
+          <p class="comment-item-text">
+            Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.  
+          </p>  
+        </div>
+
+      </article>
 
     </section>
-    <section id="comment__add">
+    <section id="comment__add" class="comment-block">
       <img id='current-user-pic' src="images/avatars/image-juliusomo.png">
       <textarea id="comment__input" type="text" placeholder="Add a comment..."></textarea>
       <button class="button">SEND</button>
