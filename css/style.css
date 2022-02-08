@@ -73,7 +73,7 @@ body {
     display: flex;
     background: var(--white);
     width: 800px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .like-count-container {
@@ -94,6 +94,7 @@ body {
 
 .add-remove-like {
     width: 15px;
+    cursor: pointer;
 }
 
 .like-count {
@@ -136,6 +137,10 @@ body {
     width: 10%;
     align-items: center;
     gap: 5px;
+}
+
+.comment-item-header-reply {
+    cursor: pointer;
 }
 
 .reply-icon {
