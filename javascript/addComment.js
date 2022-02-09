@@ -1,4 +1,5 @@
 import { Comment } from "./Comment.js"
+import { ReplyButton } from "./Comment.js"
 
 const commentInput = document.getElementById('comment__input')
 const commentList = document.getElementById('comment__list')
@@ -28,6 +29,12 @@ export const addComment = () => {
             commentReplyBlock.append(commentView)
             commentList.append(commentReplyBlock)
             commentInput.value = ''
+            //Adicionar o botão reply ao ultimo comentario inserido
+            const commentHeaders = document.querySelectorAll('.comment-item-header')
+            const lastCommentHeader = commentHeaders[commentHeaders.length-1]
+            const replyDiv = ReplyButton(commentHeaders.length-1)
+            lastCommentHeader.append(replyDiv)
+            
             commentList.scrollTop = commentList.scrollHeight
         })
 

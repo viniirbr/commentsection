@@ -23,11 +23,7 @@ export const Comment = (currentComment) => {
                 ${currentComment.createdAt}  
               </h4>
             </div>
-            <div class="comment-item-header-reply">
-              <img src="images/icon-reply.svg" class="reply-icon">
-              <p class="reply-text">Reply</p>
-            </div>
-
+            
           </div>
           <p class="comment-item-text">
             ${currentComment.content}  
@@ -35,4 +31,25 @@ export const Comment = (currentComment) => {
         </div>
         `
         return article
+}
+
+export const ReplyButton = (id) => {
+    const replyDiv = document.createElement('div')
+    replyDiv.classList.add("comment-item-header-reply")
+    
+    const replyImg = document.createElement('img')
+    replyImg.classList.add('reply-icon')
+    replyImg.src = '../images/icon-reply.svg'
+
+    const replyTitle = document.createElement('p')
+    replyTitle.classList.add('reply-text')
+    replyTitle.textContent = 'Reply'
+    
+    replyDiv.append(replyImg)
+    replyDiv.append(replyTitle)
+
+    replyDiv.addEventListener('click', () => {
+        console.log(id)
+    })
+    return replyDiv
 }
