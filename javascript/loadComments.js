@@ -15,19 +15,15 @@ export const loadComments = () => {
                 commentReplyBlock.classList.add('comment-reply-block')
                 const article = Comment(currentComment)
                 var replies = currentComment.replies
-                console.log(replies)
+                commentReplyBlock.appendChild(article)
                 
                 for (var currentReply in replies) {
                     const reply = Comment(replies[currentReply])
-                    console.log(replies[currentReply])
                     reply.classList.add('comment-reply')
                     reply.classList.add('comment-item')
                     reply.classList.add('comment-block')
                     commentReplyBlock.appendChild(reply)
                 }
-
-
-                commentReplyBlock.appendChild(article)
                 commentsList.appendChild(commentReplyBlock)
             }
         })

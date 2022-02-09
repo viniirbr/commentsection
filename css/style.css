@@ -20,6 +20,8 @@ body {
 .comment-block {
     padding: 20px;
     border-radius: 10px;
+    width: 100%;
+    min-height: 90px;
 }
 
 #comment__list {
@@ -95,7 +97,7 @@ body {
 .like-count-container {
     display: flex;
     align-items: center;
-    width: 15%;
+    width: 10%;
 }
 
 .like-control-component {
@@ -121,6 +123,7 @@ body {
 .comment-item-container {
     display: flex;
     flex-direction: column;
+    width: 90%;
 }
 
 .comment-item-header {
