@@ -1,17 +1,27 @@
+import { addComment } from "./addComment.js"
+
 export const Comment = (currentComment = '', currentUser) => { //Recebe um objeto contendo os dados do comentario e o usuário logado
   const article = document.createElement('article')
   if (currentComment == '') { //caixa de edição do comentário
-    article.innerHTML = 
-    `
+    article.innerHTML =
+      `
     <img id='current-user-pic' src="images/avatars/image-juliusomo.png">
-    <textarea id="comment__input" type="text" placeholder="Add a comment..."></textarea>
-    <button class="button" id='addCommentButton'>SEND</button>
     `
     article.classList.add('comment-block')
     article.classList.add('comment-reply')
     article.id = 'comment__reply'
 
-  } else {
+    const textArea = document.createElement('textarea')
+    textArea.id = "comment__input"
+    textArea.placeholder = "Add a comment..."
+    article.append(textArea)
+
+    const sendButton = SendButton(textArea, currentUser)
+    sendButton.classList.add('button')
+    article.append(sendButton)
+    console.log(currentUser)
+
+  } else { //é um comentario feito
     article.classList.add('comment-item')
     article.classList.add('comment-block')
     article.innerHTML =
@@ -80,10 +90,25 @@ export const ReplyButton = (currentComment, currentUser, node) => { //recebe um 
   return replyDiv
 }
 
-const sendButton = (currentComment, currentUser) => {
+const SendButton = (textAreaElement, currentUser) => {
   const button = document.createElement('button')
+  button.textContent = 'SEND'
   button.classList.add('button')
-  button.addEventListener('click', (currentComment) => {
-    
+  button.addEventListener('click', () => {
+    const currentComment = {
+      'user': {
+        "image": {
+          "png": "./images/avatars/image-maxblagun.png",
+          "webp": "./images/avatars/image-maxblagun.webp"
+        },
+        'username': currentUser
+      },
+      'content': textAreaElement.value,
+      'score': 0,
+      'createdAt': "Right now",
+      'replies': []
+    }
+    addComment(currentComment, textAreaElement.parentNode)
   })
+  return button
 }
