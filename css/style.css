@@ -45,6 +45,7 @@ body {
     margin: 0 auto;
 }
 
+
 #current-user-pic {
     height: 60px;
 }
@@ -92,6 +93,7 @@ body {
 .comment-reply {
     width: 700px;
     align-self: flex-end;
+    background: var(--white);
 }
 
 .like-count-container {

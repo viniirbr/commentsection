@@ -1,9 +1,21 @@
-export const Comment = (currentComment, currentUser) => { //Recebe um objeto contendo os dados do comentario e o usuário logado
+export const Comment = (currentComment = '', currentUser) => { //Recebe um objeto contendo os dados do comentario e o usuário logado
   const article = document.createElement('article')
-  article.classList.add('comment-item')
-  article.classList.add('comment-block')
-  article.innerHTML =
+  if (currentComment == '') { //caixa de edição do comentário
+    article.innerHTML = 
     `
+    <img id='current-user-pic' src="images/avatars/image-juliusomo.png">
+    <textarea id="comment__input" type="text" placeholder="Add a comment..."></textarea>
+    <button class="button" id='addCommentButton'>SEND</button>
+    `
+    article.classList.add('comment-block')
+    article.classList.add('comment-reply')
+    article.id = 'comment__reply'
+
+  } else {
+    article.classList.add('comment-item')
+    article.classList.add('comment-block')
+    article.innerHTML =
+      `
         <div class="like-count-container">
           <div class="like-control-component">
             <img src="images/icon-plus.svg" class="add-remove-like">
@@ -12,19 +24,19 @@ export const Comment = (currentComment, currentUser) => { //Recebe um objeto con
           </div>
         </div>
         `
-  const commentItemContainer = document.createElement('div')
-  commentItemContainer.classList.add('comment-item-container')
-  commentItemContainer.innerHTML =
-    `
+    const commentItemContainer = document.createElement('div')
+    commentItemContainer.classList.add('comment-item-container')
+    commentItemContainer.innerHTML =
+      `
   <p class="comment-item-text">
       ${currentComment.content}  
   </p> 
   `
-  article.append(commentItemContainer)
-  const commentItemHeader = document.createElement('div')
-  commentItemHeader.classList.add('comment-item-header')
-  commentItemHeader.innerHTML = 
-  `
+    article.append(commentItemContainer)
+    const commentItemHeader = document.createElement('div')
+    commentItemHeader.classList.add('comment-item-header')
+    commentItemHeader.innerHTML =
+      `
   <div class="container-author-date">
               <img class="author-profile" src="images/avatars/image-${currentComment.user.username}.png">
               <h3 class="author">
@@ -36,14 +48,15 @@ export const Comment = (currentComment, currentUser) => { //Recebe um objeto con
             </div>       
           </div>
   `
-  commentItemContainer.insertBefore(commentItemHeader, commentItemContainer.firstChild)
-  const reply = ReplyButton(currentComment)
-  commentItemHeader.append(reply)
+    commentItemContainer.insertBefore(commentItemHeader, commentItemContainer.firstChild)
+    const reply = ReplyButton(currentComment, currentUser, commentItemContainer)
+    commentItemHeader.append(reply)
+  }
 
   return article
 }
 
-export const ReplyButton = (currentComment) => { //recebe um objeto contendo a mensagem do qual ele faz parte
+export const ReplyButton = (currentComment, currentUser, node) => { //recebe um objeto contendo a mensagem do qual ele faz parte
   const replyDiv = document.createElement('div')
   replyDiv.classList.add("comment-item-header-reply")
 
@@ -59,11 +72,18 @@ export const ReplyButton = (currentComment) => { //recebe um objeto contendo a m
   replyDiv.append(replyTitle)
 
   replyDiv.addEventListener('click', () => {
-    if (currentComment.replies == undefined) {
-      console.log(currentComment)
-    } else {
-      console.log(currentComment)
-    }
+    const commentReplyBlock = node.parentNode.parentNode
+    const article = Comment('', currentUser)
+    console.log(article)
+    commentReplyBlock.append(article)
   })
   return replyDiv
+}
+
+const sendButton = (currentComment, currentUser) => {
+  const button = document.createElement('button')
+  button.classList.add('button')
+  button.addEventListener('click', (currentComment) => {
+    
+  })
 }

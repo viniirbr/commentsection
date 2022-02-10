@@ -25,7 +25,7 @@ export const addComment = (buttonId, currentUser) => {//precisa saber se é um c
         commentReplyBlock.append(commentView)
         commentList.append(commentReplyBlock)
     } else { //é um reply
-
+        console.log(buttonId)
     }
     commentInput.value = ''
     //Adicionar o botão reply ao ultimo comentario inserido
