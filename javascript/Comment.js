@@ -19,9 +19,9 @@ export const Comment = (currentComment = '', currentUser) => { //Recebe um objet
     const sendButton = SendButton(textArea, currentUser)
     sendButton.classList.add('button')
     article.append(sendButton)
-    console.log(currentUser)
 
   } else { //é um comentario feito
+
     article.classList.add('comment-item')
     article.classList.add('comment-block')
     article.innerHTML =
@@ -59,7 +59,12 @@ export const Comment = (currentComment = '', currentUser) => { //Recebe um objet
           </div>
   `
     commentItemContainer.insertBefore(commentItemHeader, commentItemContainer.firstChild)
+    
     const reply = ReplyButton(currentComment, currentUser, commentItemContainer)
+
+    // if (currentComment.user.username == currentUser.username) {
+    //   const deleteButtom
+    // }
     commentItemHeader.append(reply)
   }
 
@@ -67,6 +72,7 @@ export const Comment = (currentComment = '', currentUser) => { //Recebe um objet
 }
 
 export const ReplyButton = (currentComment, currentUser, node) => { //recebe um objeto contendo a mensagem do qual ele faz parte
+  var isReplying = false
   const replyDiv = document.createElement('div')
   replyDiv.classList.add("comment-item-header-reply")
 
@@ -84,7 +90,6 @@ export const ReplyButton = (currentComment, currentUser, node) => { //recebe um 
   replyDiv.addEventListener('click', () => {
     const commentReplyBlock = node.parentNode.parentNode
     const article = Comment('', currentUser)
-    console.log(article)
     commentReplyBlock.append(article)
   })
   return replyDiv
@@ -101,7 +106,7 @@ const SendButton = (textAreaElement, currentUser) => {
           "png": "./images/avatars/image-maxblagun.png",
           "webp": "./images/avatars/image-maxblagun.webp"
         },
-        'username': currentUser
+        'username': currentUser.username
       },
       'content': textAreaElement.value,
       'score': 0,

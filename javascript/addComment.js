@@ -10,10 +10,11 @@ export const addComment = (currentComment, node) => {//recebe os dados da mensag
         node.append(commentReplyBlock)
         node.scrollTop = node.scrollHeight
     } else {
-         const commentView = Comment(currentComment, currentComment.user)
-         console.log(node)
-         node.lastChild.remove()
-         node.append(commentView)
+        const commentView = Comment(currentComment, currentComment.user)
+        commentView.classList.add('comment-reply')
+        node.parentNode.append(commentView) //adiciona reply
+        const children = node.parentNode.children
+        children[children.length-2].remove() //remove a caixa de edição
     }
 
 }
