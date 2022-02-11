@@ -115,6 +115,8 @@ body {
 .add-remove-like {
     width: 15px;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 2px;
 }
 
 .like-count {
@@ -146,6 +148,14 @@ body {
 
 .author {
     font-size: 1rem;
+}
+
+.currentuser-identifier {
+    background: var(--moderate-blue);
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: var(--white);
 }
 
 .date {
@@ -183,3 +193,4 @@ body {
     margin-top: 20px;
     margin-bottom: 0;
 }
+

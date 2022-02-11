@@ -11,9 +11,9 @@ fetch('../data.json')
     .then(jsonData => {
         const button = document.querySelector('.button')
         const currentUser = jsonData.currentUser.username
+        const commentInput = document.getElementById('comment__input')
         //console.log(currentUser)
         button.addEventListener('click', () => {
-            const commentInput = document.getElementById('comment__input')
             if (commentInput.value != '') { //verifica se a caixa nao esta vazia
                 const commentList = document.getElementById('comment__list')
                 const user = currentUser
@@ -32,7 +32,9 @@ fetch('../data.json')
                 addComment(currentComment, commentList)
                 commentInput.value = ''
             } else {
-                //avisa que a caixa de comentario tem que ser preenchida
+                //avisa que a caixa de comentario tem que ser preenchida - 
+                //essa verificação deveria ser feita no addComment pq é reutilizada no reply
+                commentInput.style = 'border: red 2px solid'
             }
             })
     })

@@ -1,5 +1,4 @@
 import { Comment } from "./Comment.js";
-import { ReplyButton } from "./Comment.js";
 
 const commentsList = document.getElementById('comment__list')
 
@@ -28,15 +27,6 @@ export const loadComments = () => {
                 }
                 commentsList.appendChild(commentReplyBlock)
             }
-            //   const commentHeader = document.querySelectorAll('.comment-item-header')
-            //   commentHeader.forEach((header,id) => {
-            //      const replyDiv = ReplyButton(currentComment)
-            //      header.append(replyDiv)
-            //   })
-            // const commentReplyBlocks = document.querySelectorAll('.comment-reply-block')
-            // commentReplyBlocks.forEach((block) => {
-            //     //console.log(block.childNodes.)
-            // })
 
         })
 }

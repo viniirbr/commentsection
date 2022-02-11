@@ -24,16 +24,9 @@ export const Comment = (currentComment = '', currentUser) => { //Recebe um objet
 
     article.classList.add('comment-item')
     article.classList.add('comment-block')
-    article.innerHTML =
-      `
-        <div class="like-count-container">
-          <div class="like-control-component">
-            <img src="images/icon-plus.svg" class="add-remove-like">
-            <p class="like-count">${currentComment.score}</p>
-            <img src="images/icon-minus.svg" class="add-remove-like">
-          </div>
-        </div>
-        `
+    const likeCountContainer = likeControlComponentContainer(currentComment.score)
+    article.appendChild(likeCountContainer)
+
     const commentItemContainer = document.createElement('div')
     commentItemContainer.classList.add('comment-item-container')
     commentItemContainer.innerHTML =
@@ -59,12 +52,19 @@ export const Comment = (currentComment = '', currentUser) => { //Recebe um objet
           </div>
   `
     commentItemContainer.insertBefore(commentItemHeader, commentItemContainer.firstChild)
-    
+
     const reply = ReplyButton(currentComment, currentUser, commentItemContainer)
 
-    // if (currentComment.user.username == currentUser.username) {
-    //   const deleteButtom
-    // }
+    // identifica se a mensagem pertence ao usuário atual - delete e edit serão implementadas nesse bloco
+    if (currentComment.user.username == currentUser.username) {
+      const userIdentifier = document.createElement('p')
+      userIdentifier.classList.add('currentuser-identifier')
+      userIdentifier.textContent = 'you'
+      commentItemHeader.append(userIdentifier)
+      const dateHeader = commentItemHeader.children[0].children[2]
+      commentItemHeader.children[0].insertBefore(userIdentifier, dateHeader)
+    }
+
     commentItemHeader.append(reply)
   }
 
@@ -116,4 +116,72 @@ const SendButton = (textAreaElement, currentUser) => {
     addComment(currentComment, textAreaElement.parentNode)
   })
   return button
+}
+
+const likeControlComponentContainer = (score) => {
+  const likeCountContainer = document.createElement('div')
+  likeCountContainer.classList.add('like-count-container')
+  const likeControlComponent = document.createElement('div')
+  likeControlComponent.classList.add('like-control-component')
+  const addLike = document.createElement('img')
+  addLike.src = 'images/icon-plus.svg'
+  addLike.classList.add('add-remove-like')
+  const likeCount = document.createElement('p')
+  likeCount.classList.add('like-count')
+  likeCount.textContent = score
+  const removeLike = document.createElement('img')
+  removeLike.src = 'images/icon-minus.svg'
+  removeLike.classList.add('add-remove-like')
+  likeControlComponent.append(addLike)
+  likeControlComponent.append(likeCount)
+  likeControlComponent.append(removeLike)
+  likeCountContainer.append(likeControlComponent)
+
+  score = Number(score)
+  const maxScore = score+1
+  const minScore = score-1
+
+  if (score == 0) {
+    removeLike.style.visibility = 'hidden'
+  }
+
+  addLike.addEventListener('click', () => {
+    if(score < maxScore) {
+      score++
+      likeCount.textContent = score
+      if (score == maxScore) {
+        addLike.style.visibility = 'hidden'
+      } else {
+        addLike.style.visibility = 'visible'
+      }
+
+      if (score == minScore) {
+        addLike.style.visibility = 'hidden'
+      } else {
+        removeLike.style.visibility = 'visible'
+      }
+    }  
+  })
+
+  removeLike.addEventListener('click', () => {
+    if(score > minScore) {
+      score--
+      likeCount.textContent = score
+    }
+    if (score == maxScore) {
+      addLike.style.visibility = 'hidden'
+    } else {
+      addLike.style.visibility = 'visible'
+    }
+    if (score == minScore) {
+      removeLike.style.visibility = 'hidden'
+    } else {
+      removeLike.style.visibility = 'visible'
+    }
+
+    if (score == 0) {
+      removeLike.style.visibility = 'hidden'
+    }
+  })
+  return likeCountContainer
 }
