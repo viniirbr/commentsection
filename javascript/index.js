@@ -4,7 +4,7 @@ import { loadComments } from './loadComments.js'
 
 loadComments()
 
-fetch('../data.json')
+fetch('./data.json')
     .then(response => {
         return response.json()
     })
