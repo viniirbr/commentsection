@@ -78,7 +78,7 @@ export const ReplyButton = (currentComment, currentUser, node) => { //recebe um 
 
   const replyImg = document.createElement('img')
   replyImg.classList.add('reply-icon')
-  replyImg.src = '../images/icon-reply.svg'
+  replyImg.src = './images/icon-reply.svg'
 
   const replyTitle = document.createElement('p')
   replyTitle.classList.add('reply-text')

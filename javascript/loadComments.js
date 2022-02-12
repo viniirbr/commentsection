@@ -3,7 +3,7 @@ import { Comment } from "./Comment.js";
 const commentsList = document.getElementById('comment__list')
 
 export const loadComments = () => {
-    fetch("../data.json")
+    fetch("./data.json")
         .then(response => {
             return response.json();
         })
